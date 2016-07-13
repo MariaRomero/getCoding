@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    To Do List
+  </title>
+
+  <style>
+    body {
+      background-color: lightblue;
+      padding: 30px;
+    }
+    input[type="button"] {
+      background-color: pink;
+    }
+  </style>
+  </head>
+  <body>
+    <script>
+      function entry() {
+        var newToDo = document.createElement("div");
+        newToDo.innerHTML = document.getElementById("box").value;
+        newToDo.onclick = deleteToDo;
+        document.getElementById("toDoBox").appendChild(newToDo);
+        saveList();
+      }
+
+      function deleteToDo() {
+        document.getElementById("toDoBox").removeChild(this);
+        saveList();
+      }
+
+      function saveList() {
+        localStorage.storedList = document.getElementById("toDoBox").innerHTML;
+      }
+
+      function loadList() {
+        document.getElementById("toDoBox").innerHTML = localStorage.storedList;
+        for(var i = 0; i < toDoBox.children.length; i ++) {
+          toDoBox.children[i].onclick = deleteToDo;
+        }
+      }
+    </script>
+    <p style="font-size: 30pt;">To Do List</p>
+    <p> Please enter items to the list.</p>
+    <p>To Do: <input id="box" type="text" value=" Type here to add task"/></p>
+    <input type="button" value="Add item" onclick="entry();"/>
+    <div id="toDoBox"></div>
+    <script>
+      if(localStorage.storedList) {
+        loadList();
+      }
+    </script>
+    <iframe>
+      https://www.google.com/maps/embed/v1/search?q=Moscow&key=AIzaSyA7RW-bwGYQb4GNV_qVshK3oEj5XDCHgcQ
+    </iframe>
+  </body>
+  </html>
